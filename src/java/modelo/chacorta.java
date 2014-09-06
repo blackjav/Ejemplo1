@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author javs
  */
 public class chacorta extends HttpServlet {
-
+        String sar;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
