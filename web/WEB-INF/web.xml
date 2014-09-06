@@ -20,10 +20,6 @@
         <servlet-name>UpdateS</servlet-name>
         <servlet-class>controlador.UpdateS</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>chacorta</servlet-name>
-        <servlet-class>modelo.chacorta</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>Service</servlet-name>
         <url-pattern>/Service</url-pattern>
@@ -43,10 +39,6 @@
     <servlet-mapping>
         <servlet-name>UpdateS</servlet-name>
         <url-pattern>/UpdateS</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>chacorta</servlet-name>
-        <url-pattern>/chacorta</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
