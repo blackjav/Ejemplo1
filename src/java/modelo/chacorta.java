@@ -37,7 +37,7 @@ public class chacorta extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet chacorta</title>");            
-            out.println("</head>");
+            out.println("</head> NO MAMES CHACORTA ");
             out.println("<body>");
             out.println("<h1>Servlet chacorta at " + request.getContextPath() + "</h1>");
             out.println("</body>");
