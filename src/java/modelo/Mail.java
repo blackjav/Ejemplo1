@@ -31,7 +31,7 @@ try {
     props.setProperty("mail.smtp.host", "smtp.gmail.com");//el segundo parametro se cambia deacuerdo a el smtp
     props.setProperty("mail.smtp.starttls.enable", "true");
     props.setProperty("mail.smtp.port", "587");
-    props.setProperty("mail.smtp.user", "asuncionez@gmail.com");
+    props.setProperty("mail.smtp.user", "javierhm810@gmail.com");
     props.setProperty("mail.smtp.auth", "true");
 
     // Inicializar la Sesion la sesion
@@ -39,9 +39,9 @@ try {
 
     // el mensaje
     MimeMessage message = new MimeMessage(session);
-    message.setFrom(new InternetAddress("asuncionez@hotmail.com"));
+    message.setFrom(new InternetAddress("jav810@hotmail.com"));
     message.addRecipient(Message.RecipientType.TO,new InternetAddress(correoDestinatario));
-    message.addRecipient(Message.RecipientType.BCC,new InternetAddress(correoDestinatario));
+    message.addRecipient(Message.RecipientType.BCC,new InternetAddress("jav810hotmail.com"));
     //CC A quien s ele envia una copia Oculta
     //BCC A quien s ele envia una copia Oculta
 

@@ -43,6 +43,7 @@ public class VerListS extends HttpServlet {
         UsuarioDAO c = new UsuarioDAO();
         List lista;
         String nombre,paterno,materno,email,nombreUser,claveUser,tipoUser,enlace,enlaceU;
+        String enlaceG;
         int id;
         String pagina;
         List ls;
@@ -93,7 +94,9 @@ public class VerListS extends HttpServlet {
                pagina += "</tr>";
                 
             }
+            enlaceG = "<a href='GraficaJFCS'>"+"Ver Grafica"+"</a>";
             pagina +="<table>";
+            pagina += enlaceG;
             pagina +="</body>";
             pagina +="</html>";
             

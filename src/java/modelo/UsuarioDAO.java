@@ -6,11 +6,13 @@
 
 package modelo;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import modelo.Usuario;
@@ -23,14 +25,11 @@ import modelo.Usuario;
 public class UsuarioDAO {
     
     private static final String SQL_INSERT = "insert into usuarioo(nombre,aPaterno,aMaterno,email,nombreUsuario,claveUsuario,tipoUsuario) values(?,?,?,?,?,?,?)";
-    
     private static final String SQL_UPDATE = "update usuarioo set nombre=?,aPeterno=?,aMaterno=?,email=?,nombreUsuario=?,tipoUsuario=? where idUsuario=?";
-    
     private static final String SQL_DELETE = "delete from usuarioo where idUsuario=?";
-    
     private static final String SQL_SELECT ="select * from usuarioo where idUsuario=?";
-    
     private static final String SQL_SELECT_ALL ="select * from usuarioo";
+    private static final String SQL_GRAFICAR ="{call spDatosGrafica()}"; 
     
     private String url = "jdbc:mysql://localhost:3306/Usuario";
 	private String driver = "com.mysql.jdbc.Driver";
@@ -224,8 +223,29 @@ public class UsuarioDAO {
         
     }
      
-    
-            
      
-    
+      public List grafica() throws SQLException { 
+            
+          CallableStatement cs = null; 
+          ResultSet rs = null; 
+          List lista = new ArrayList(); 
+          try { 
+                cs = conexionDB.prepareCall(SQL_GRAFICAR); 
+                rs = cs.executeQuery(); 
+                while (rs.next()) { 
+                    Grafica grafica = new Grafica(); 
+                    grafica.setCantidad(Integer.parseInt(rs.getString("Alumnos"))); 
+                    grafica.setNombre(rs.getString("carrera")); 
+                    lista.add(grafica); 
+                } 
+            }finally { 
+                if (rs != null) { 
+                rs.close(); 
+            } 
+            if (cs != null) { 
+                cs.close(); 
+            } 
+            } 
+        return lista; 
+    }
 }
