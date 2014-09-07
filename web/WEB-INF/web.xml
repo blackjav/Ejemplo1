@@ -24,6 +24,10 @@
         <servlet-name>GraficaJFCS</servlet-name>
         <servlet-class>controlador.GraficaJFCS</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProcesAlumnosS</servlet-name>
+        <servlet-class>controlador.ProcesAlumnosS</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Service</servlet-name>
         <url-pattern>/Service</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>GraficaJFCS</servlet-name>
         <url-pattern>/GraficaJFCS</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProcesAlumnosS</servlet-name>
+        <url-pattern>/ProcesAlumnosS</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

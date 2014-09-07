@@ -13,7 +13,7 @@ and open the template in the editor.
     <body>
         <h1>Registro</h1>
         <section>
-            <form action="../Controler" method="POST">
+            <form action="../ProcesAlumnosS" method="POST">
                 <table>
                     
                 <tr>  
@@ -27,32 +27,12 @@ and open the template in the editor.
                 </tr>
                 
                 <tr>
-                <td><label>Apellido Materno</label></td>
-                <td><input type="text" name="txtMaterno" placeholder="Apellido Materno" required="Requerido"/></td>
-                </tr>
-                
-                <tr>
-                <td><label>E-mail</label></td>
-                <td><input type="email" name="txtMail" placeholder="E-mail" required="Requerido"/> </td>
-                </tr>
-                 
-                <tr>
-                <td><label>Usuario</label></td>
-                <td><input type="text" name="txtUsuario" placeholder="Usuario" required="Requerido"/> </td>
-                </tr>
-                
-                <tr>
-                <td><label>Password</label></td>
-                <td><input type="password" name="txtPass" placeholder="Password" required="Requerido"/></td>
-                </tr>
-                
-                <tr>
-                <td><label>Tipo de usuario</label></td>
-                <td><input type="text" name="txtTipo" placeholder="L"/></td>
-                </tr>
-                
-                <tr>
-                <td><input type="submit" value="Comenzar"> </td>
+                <td><label>Carrera</label></td>
+                <td><select name=Carrera value="...">
+                        <option name=uno value="Ing.en Sistemas"> Ing. En sistemas </option>
+                        <option name=dos value='Medicina'> Medicina </option>
+                        <option name=tres value='QBP'> QBP </option>
+                     </select></td>
                 </tr>
                 
                 </table>
