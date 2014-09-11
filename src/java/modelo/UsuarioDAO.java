@@ -29,7 +29,15 @@ public class UsuarioDAO {
     private static final String SQL_DELETE = "delete from usuarioo where idUsuario=?";
     private static final String SQL_SELECT ="select * from usuarioo where idUsuario=?";
     private static final String SQL_SELECT_ALL ="select * from usuarioo";
-    private static final String SQL_GRAFICAR ="{call spDatosGrafica()}"; 
+    private static final String SQL_GRAFICAR ="{call spDatosGrafica()}";
+    
+    
+    private static final String SQL_INSERTALUMNO = "insert into alumnos(nombre,paterno,carrera_id1) values(?,?,?)";
+    private static final String SQL_UPDATEALUMNO = "update alumnos set nombre=?,aPeterno=?,aMaterno=?,email=?,nombreUsuario=?,tipoUsuario=? where idUsuario=?";
+    private static final String SQL_DELETEALUMNO = "delete from alumnos where idAlumnos=?";
+    private static final String SQL_SELECTALUMNO ="select * from alumnos where idAlumnos=?";
+    private static final String SQL_SELECT_ALLALUMNO ="select * from alumnos";
+    private static final String SQL_GRAFICARALUMNO ="{call spDatosGrafica()}";
     
     private String url = "jdbc:mysql://localhost:3306/Usuario";
 	private String driver = "com.mysql.jdbc.Driver";
@@ -95,6 +103,29 @@ public class UsuarioDAO {
         
         
     }
+    
+    public void createAlumno(Alumno alumno)throws SQLException{
+        PreparedStatement ps = null;
+        
+        try{
+            ps= conexionDB.prepareStatement(SQL_INSERTALUMNO);
+            ps.setString(1, alumno.getNombre());
+            ps.setString(2, alumno.getPaterno());//checar
+            ps.setInt(3, alumno.getCarrera());
+            //ps.setInt(8,1);
+            
+            ps.executeUpdate();
+            
+        }
+        finally{
+            if(ps != null) ps.close();
+            //if(conexionDB != null) conexionDB.close();           
+        }
+        
+        
+    }
+    
+    
     
     public void update(Usuario usuario)throws SQLException{
         PreparedStatement ps = null;

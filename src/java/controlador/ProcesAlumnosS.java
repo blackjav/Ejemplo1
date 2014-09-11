@@ -41,9 +41,9 @@ public class ProcesAlumnosS extends HttpServlet {
         
         a.setNombre(request.getParameter("txtNombre"));
         a.setPaterno(request.getParameter("txtPaterno"));
-        a.setCarrera(request.getParameter("carrera"));
+        a.setCarrera(Integer.parseInt(request.getParameter("Carrera")));
         
-        
+        c.createAlumno(a);
        
       
     }

@@ -33,7 +33,7 @@ public class Alumno {
         this.paterno = paterno;
     }
 
-    public void setCarrera(String carrera) {
+    public void setCarrera(int carrera) {
         this.carrera = carrera;
     }
 
@@ -49,14 +49,14 @@ public class Alumno {
         return paterno;
     }
 
-    public String getCarrera() {
+    public int getCarrera() {
         return carrera;
     }
 
     public int getId() {
         return id;
     }
-    private String carrera;
+    private int carrera;
     
     
     
