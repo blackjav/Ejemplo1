@@ -6,31 +6,22 @@
 
 package controlador;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.List;
-import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Alumno;
-import modelo.Grafica;
-import modelo.UsuarioDAO;
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartUtilities;
-import org.jfree.chart.JFreeChart;
-import org.jfree.data.general.DefaultPieDataset;
+import modelo.Mail;
 
 /**
  *
  * @author javs
  */
-public class ProcesAlumnosS extends HttpServlet {
+public class mailS extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,22 +33,52 @@ public class ProcesAlumnosS extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException,SQLException {
+            throws ServletException, IOException, MessagingException {
         
-        Alumno a = new Alumno();
-        UsuarioDAO c = new UsuarioDAO();
         
-        a.setNombre(request.getParameter("txtNombre"));
-        a.setPaterno(request.getParameter("txtPaterno"));
-        a.setCarrera(Integer.parseInt(request.getParameter("Carrera")));
+        Mail m = new Mail();
+        String mensaje = "Se recibio tu peticion";
+        String encabezado = "Correro de revian";
+        String Correro = request.getParameter("txtCorrero");
         
-        c.createAlumno(a);
-       
-        response.sendRedirect("GraficaJFCS");
-       
-      
+        m.enviarMail(Correro, encabezado, mensaje);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        /*response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. 
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet mailS</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet mailS at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+            
+        }*/
     }
-    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -72,10 +93,9 @@ public class ProcesAlumnosS extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            processRequest(request, response
-            );
-        } catch (SQLException ex) {
-            Logger.getLogger(ProcesAlumnosS.class.getName()).log(Level.SEVERE, null, ex);
+            processRequest(request, response);
+        } catch (MessagingException ex) {
+            Logger.getLogger(mailS.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -92,8 +112,8 @@ public class ProcesAlumnosS extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(ProcesAlumnosS.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (MessagingException ex) {
+            Logger.getLogger(mailS.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -106,7 +126,5 @@ public class ProcesAlumnosS extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-   
 
 }

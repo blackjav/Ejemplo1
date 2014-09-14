@@ -6,12 +6,21 @@
 
 package controlador;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import java.util.Locale;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Grafica;
+import modelo.UsuarioDAO;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartUtilities;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
@@ -33,29 +42,7 @@ public class GraficaJFCS extends HttpServlet {
         
         
         //TODO aqui
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        grafica(request, response);
         /* response.setContentType("text/html;charset=UTF-8");
        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code.
@@ -69,6 +56,46 @@ public class GraficaJFCS extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
         }*/
+    }
+    
+    
+            private void grafica(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+                    JFreeChart chart = ChartFactory.createPieChart3D("Alumnos Por Carrera",getGraficaAlumnos(), true, true, Locale.getDefault());
+                    String arc = getServletConfig().getServletContext().getRealPath("/grafica2.png");
+                    ChartUtilities.saveChartAsPNG(new File(arc), chart, 700, 400);
+                    System.out.println("SE RECIBIOa......."+arc);
+                    irAPagina("grafica2.jsp", request, response);
+        }
+            
+            private DefaultPieDataset getGraficaAlumnos() {
+                    DefaultPieDataset pie = new DefaultPieDataset();
+                    UsuarioDAO del = new UsuarioDAO();
+                    try {
+                        List datos = del.grafica();
+                        for (int indice = 0; indice < datos.size(); indice++){
+                        Grafica dto = (Grafica)datos.get(indice);
+                        pie.setValue(dto.getNombre(), dto.getCantidad());
+                    }
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+return pie;
+}
+    private void irAPagina(String graficajsp, HttpServletRequest request, HttpServletResponse response) throws IOException {
+       
+          response.setContentType("text/html;charset=UTF-8");
+       try (PrintWriter out = response.getWriter()) {
+            // TODO output your page here. You may use following sample code.
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet GraficaJFCS</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<img src=\"grafica2.png\"/>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

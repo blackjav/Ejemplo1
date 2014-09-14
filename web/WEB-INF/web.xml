@@ -28,6 +28,14 @@
         <servlet-name>ProcesAlumnosS</servlet-name>
         <servlet-class>controlador.ProcesAlumnosS</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>VerGraficaS</servlet-name>
+        <servlet-class>controlador.VerGraficaS</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>mailS</servlet-name>
+        <servlet-class>controlador.mailS</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Service</servlet-name>
         <url-pattern>/Service</url-pattern>
@@ -55,6 +63,14 @@
     <servlet-mapping>
         <servlet-name>ProcesAlumnosS</servlet-name>
         <url-pattern>/ProcesAlumnosS</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VerGraficaS</servlet-name>
+        <url-pattern>/VerGraficaS</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>mailS</servlet-name>
+        <url-pattern>/mailS</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
