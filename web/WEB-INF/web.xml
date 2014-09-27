@@ -36,6 +36,10 @@
         <servlet-name>mailS</servlet-name>
         <servlet-class>controlador.mailS</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginS</servlet-name>
+        <servlet-class>controlador.LoginS</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Service</servlet-name>
         <url-pattern>/Service</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>mailS</servlet-name>
         <url-pattern>/mailS</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginS</servlet-name>
+        <url-pattern>/LoginS</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

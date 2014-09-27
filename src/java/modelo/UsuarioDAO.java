@@ -12,6 +12,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -279,4 +280,28 @@ public class UsuarioDAO {
             } 
         return lista; 
     }
+      
+      public boolean verificarUsuario(String user,String pass){
+		try {
+                    PreparedStatement ps= conexionDB.prepareStatement("Select * from usuarioo where usuarioo.nombre=? and usuarioo.claveUsuario=?");
+                    ps.setString(1, user);
+                    ps.setString(2, pass);
+                    ResultSet r = ps.executeQuery();
+            
+			if(r.next()){
+				//System.out.println(r.getObject(1));
+                                //System.out.println(r.getObject(2));
+				return true;
+			}
+			return false;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+      
+      
 }
+
+
